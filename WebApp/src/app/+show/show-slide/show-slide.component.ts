@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Slide } from '../../core/model/slide';
 
 @Component({
   selector: 'show-slide',
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShowSlideComponent implements OnInit {
+
+  @Input() slide: Slide;
 
   constructor() { }
 

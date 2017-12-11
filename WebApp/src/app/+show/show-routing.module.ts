@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ShowSlideComponent } from './show-slide/show-slide.component';
+import { PresenterComponent } from './presenter/presenter.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ShowSlideComponent
+    component: PresenterComponent
   }
 ];
 
