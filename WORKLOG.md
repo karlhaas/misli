@@ -5,5 +5,7 @@
 
 ## 09:00
 - Upgrade CLI
-- New Angular project
-- 
+- New Angular project including routing ...
+
+## 9:30
+- Routing including Lazy Loading and NotFound handling
