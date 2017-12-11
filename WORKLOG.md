@@ -1,4 +1,4 @@
-# 11.12.2017 08:45 - 
+# 11.12.2017 08:45 -
 
 ## 08:45
 - neues BitBucket Repository
@@ -18,6 +18,9 @@
 
 ## 12:35
 - Add NGRX support and read data from store
+
+## 13:15
+- Basic edit components (no functionality yet)
 
 # Pitfalls
 ## Angular Flex Layout
