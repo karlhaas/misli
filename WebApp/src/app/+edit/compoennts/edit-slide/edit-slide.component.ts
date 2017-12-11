@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
 import { Slide } from '@core/model/slide';
 
 @Component({
-  selector: 'edit-slide',
+  selector: 'kh-edit-slide',
   templateUrl: './edit-slide.component.html',
   styleUrls: ['./edit-slide.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

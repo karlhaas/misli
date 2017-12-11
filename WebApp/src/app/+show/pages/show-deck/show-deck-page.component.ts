@@ -5,7 +5,7 @@ import * as fromCore from '@core/state';
 import { Slide } from '@core/model/slide';
 
 @Component({
-  selector: 'show-deck',
+  selector: 'kh-show-deck',
   templateUrl: './show-deck-page.component.html',
   styleUrls: ['./show-deck-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

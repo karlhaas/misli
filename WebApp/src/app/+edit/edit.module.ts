@@ -13,6 +13,13 @@ import { EditSlidePageComponent } from './pages/edit-slide-page/edit-slide-page.
     SharedModule,
     EditRoutingModule
   ],
-  declarations: [EditDecksComponent, EditDeckPageComponent, EditDeckComponent, EditSlideComponent, EditSlidePageComponent]
+  declarations: [
+    EditDecksComponent,
+    EditDeckPageComponent,
+    EditDeckComponent,
+    EditSlideComponent,
+    EditSlidePageComponent
+  ]
 })
-export class EditModule { }
+export class EditModule {
+}

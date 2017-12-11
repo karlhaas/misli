@@ -5,7 +5,7 @@ import { Deck } from '@core/model/deck';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'show-decks-page',
+  selector: 'kh-show-decks-page',
   templateUrl: './show-decks-page.component.html',
   styleUrls: ['./show-decks-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

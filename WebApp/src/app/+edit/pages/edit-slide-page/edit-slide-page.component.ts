@@ -6,7 +6,7 @@ import { Slide } from '@core/model/slide';
 import { UpdateSlideDataAction } from '@core/state/deck/deck.actions';
 
 @Component({
-  selector: 'edit-slide-page',
+  selector: 'kh-edit-slide-page',
   templateUrl: './edit-slide-page.component.html',
   styleUrls: ['./edit-slide-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

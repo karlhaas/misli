@@ -5,7 +5,7 @@
     <div class="edit-deck-navigation-element"
          *ngFor="let slide of deck.slides; trackBy: trackByUuid; index as i"
          [routerLink]="slide.uuid">
-      <show-slide [slide]="slide"></show-slide>
+      <kh-show-slide [slide]="slide"></kh-show-slide>
       <button (click)="addSlide(i+1)">Add Slide</button>
     </div>
   </div>

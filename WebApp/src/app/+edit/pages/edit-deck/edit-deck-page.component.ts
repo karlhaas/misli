@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AddSlideAction } from '@core/state/deck/deck.actions';
 
 @Component({
-  selector: 'edit-deck-page',
+  selector: 'kh-edit-deck-page',
   templateUrl: './edit-deck-page.component.html',
   styleUrls: ['./edit-deck-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
 import { Deck } from '@core/model/deck';
 
 @Component({
-  selector: 'edit-deck',
+  selector: 'kh-edit-deck',
   templateUrl: './edit-deck.component.html',
   styleUrls: ['./edit-deck.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
