@@ -19,6 +19,13 @@ const initialState = {
       type: 'simple-text',
       data: 'Dritte'
     }]
+  }, {
+    uuid: 'abcd',
+    name: 'My first deck',
+    slides: [{
+      type: 'simple-text',
+      data: 'Hallo, ich bin ein anderes Deck'
+    }]
   }]
 };
 

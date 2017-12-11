@@ -61,9 +61,9 @@ export class PresenterComponent implements OnInit {
   @HostListener('document:wheel', ['$event'])
   handleWheel(event: WheelEvent) {
     if (event.deltaY > 0) {
-      return this.previousSlide();
-    } else if (event.deltaY < 0) {
       return this.nextSlide();
+    } else if (event.deltaY < 0) {
+      return this.previousSlide();
     }
   }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { ShowRoutingModule } from './show-routing.module';
-import { ShowSlideComponent } from './show-slide/show-slide.component';
 import { PresenterComponent } from './presenter/presenter.component';
 import { SharedModule } from '@shared/shared.module';
 
@@ -10,6 +9,6 @@ import { SharedModule } from '@shared/shared.module';
     SharedModule,
     ShowRoutingModule
   ],
-  declarations: [ShowSlideComponent, PresenterComponent]
+  declarations: [PresenterComponent]
 })
 export class ShowModule { }

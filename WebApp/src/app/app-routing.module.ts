@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: 'app/+show/show.module#ShowModule'
   },
   {
+    path: 'edit',
+    loadChildren: 'app/+edit/edit.module#EditModule'
+  },
+  {
     path: '404',
     pathMatch: 'full',
     component: NotFoundComponent
