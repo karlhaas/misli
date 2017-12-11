@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Slide } from '../../core/model/slide';
+import { Slide } from '@core/model/slide';
 
 @Component({
   selector: 'show-slide',

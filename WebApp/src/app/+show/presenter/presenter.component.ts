@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostListener } from '@angular/core';
-import { Deck } from '../../core/model/deck';
+import { Deck } from '@core/model/deck';
 
 @Component({
   selector: 'presenter',
@@ -16,6 +16,9 @@ export class PresenterComponent implements OnInit {
     }, {
       type: 'simple-text',
       data: 'Zweite slide'
+    }, {
+      type: 'simple-text',
+      data: 'Dritte'
     }]
   };
 
@@ -54,6 +57,15 @@ export class PresenterComponent implements OnInit {
       case 'PageDown':
       case 'ArrowRight':
         return this.nextSlide();
+    }
+  }
+
+  @HostListener('document:wheel', ['$event'])
+  handleWheel(event: WheelEvent) {
+    if (event.deltaY > 0) {
+      return this.previousSlide();
+    } else if (event.deltaY < 0) {
+      return this.nextSlide();
     }
   }
 }

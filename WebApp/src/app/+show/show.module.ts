@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ShowRoutingModule } from './show-routing.module';
 import { ShowSlideComponent } from './show-slide/show-slide.component';
 import { PresenterComponent } from './presenter/presenter.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ShowRoutingModule,
+    SharedModule,
+    ShowRoutingModule
   ],
   declarations: [ShowSlideComponent, PresenterComponent]
 })

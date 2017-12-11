@@ -9,3 +9,13 @@
 
 ## 9:30
 - Routing including Lazy Loading and NotFound handling
+
+## 10:15
+- Add keyboard and presenter navigation + basic colors
+
+## 11:15
+- 
+
+# Pitfalls
+## Angular Flex Layout
+- FlexLayoutModule not added (added just to the app module) -> styles not applied without any warning
