@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" class="edit-deck-layout">
+  <div fxFlex="200px" class="edit-deck-navigation" fxLayout="row" fxlayoutAlign="start start"
+       fxLayoutWrap>
+    <button (click)="addSlide(0)">Add Slide</button>
+    <div class="edit-deck-navigation-element"
+         *ngFor="let slide of deck.slides; trackBy: trackByUuid; index as i"
+         [routerLink]="slide.uuid">
+      <show-slide [slide]="slide"></show-slide>
+      <button (click)="addSlide(i+1)">Add Slide</button>
+    </div>
+  </div>
+  <div fxFlex>
+    <router-outlet></router-outlet>
+  </div>
+</div>

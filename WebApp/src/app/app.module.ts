@@ -18,7 +18,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     // StoreRouterConnectingModule,
-    StoreModule.forRoot(coreReducers, {metaReducers: coreMetaReducers}),
+    StoreModule.forRoot(coreReducers, {metaReducers: coreMetaReducers, initialState: JSON.parse(localStorage.getItem('MY_DATA'))}),
     AppRoutingModule,
   ],
   providers: [],

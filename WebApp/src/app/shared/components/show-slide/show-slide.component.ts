@@ -10,6 +10,7 @@ import { Slide } from '@core/model/slide';
 export class ShowSlideComponent implements OnInit {
 
   @Input() slide: Slide;
+  @Input() border = false;
 
   constructor() { }
 

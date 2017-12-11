@@ -5,12 +5,12 @@ import * as fromCore from '@core/state';
 import { Slide } from '@core/model/slide';
 
 @Component({
-  selector: 'presenter',
-  templateUrl: './presenter.component.html',
-  styleUrls: ['./presenter.component.scss'],
+  selector: 'show-deck',
+  templateUrl: './show-deck-page.component.html',
+  styleUrls: ['./show-deck-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PresenterComponent implements OnInit {
+export class ShowDeckPageComponent implements OnInit {
 
   deck: Deck;
   index = 0;

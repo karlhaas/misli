@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="200px"
-       style="height: 200px; border: 1px solid grey; padding: 5px; margin: 10px; cursor: pointer;"
+       class="slide-frame"
        *ngFor="let deck of decks; trackBy:trackByUuid"
        (click)="deckSelected(deck)">
     <show-slide [slide]="deck.slides[0]"></show-slide>

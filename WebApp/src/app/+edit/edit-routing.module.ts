@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EditDecksComponent } from './pages/edit-decks/edit-decks.component';
-import { EditDeckComponent } from './pages/edit-deck/edit-deck.component';
+import { EditDeckPageComponent } from './pages/edit-deck/edit-deck-page.component';
+import { EditSlidePageComponent } from './pages/edit-slide-page/edit-slide-page.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
   },
   {
     path: ':uuid',
-    component: EditDeckComponent
+    component: EditDeckPageComponent,
+    children: [{
+      path: ':slideUuid',
+      component: EditSlidePageComponent
+    }]
   }
 ];
 

@@ -22,9 +22,25 @@ export function logger(reducer: ActionReducer<CoreState>): ActionReducer<CoreSta
   };
 }
 
+export function localStorageStorer(reducer: ActionReducer<CoreState>): ActionReducer<CoreState> {
+  return function(state: CoreState, action: any): CoreState {
+    console.log('state', state);
+    console.log('action', action);
+    const result = reducer(state, action);
+    localStorage.setItem('MY_DATA', JSON.stringify(result));
+    return result;
+  };
+}
+
 export const coreMetaReducers: MetaReducer<CoreState>[] = !environment.production
-  ? [logger, storeFreeze]
+  ? [logger, localStorageStorer, storeFreeze]
   : [];
 
 export const getDecksState = (state: CoreState) => state.decks;
 export const getAllDecks = createSelector(getDecksState, fromDeck.getAllDecks);
+export function getDeckByUuid(uuid: string) {
+  return createSelector(getDecksState, fromDeck.getDeckByUuid(uuid));
+}
+export function getSlideByUuid(uuid: string) {
+  return createSelector(getDecksState, fromDeck.getSlideByUuid(uuid));
+}

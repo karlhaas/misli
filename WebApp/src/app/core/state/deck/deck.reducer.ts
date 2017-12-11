@@ -1,5 +1,11 @@
-import { ADD_DECK_ACTION, ADD_SLIDE_ACTION, DeckActions } from '@core/state/deck/deck.actions';
+import {
+  ADD_DECK_ACTION,
+  ADD_SLIDE_ACTION,
+  DeckActions,
+  UPDATE_SLIDE_DATA_ACTION
+} from '@core/state/deck/deck.actions';
 import { Deck } from '@core/model/deck';
+import { Slide } from '@core/model/slide';
 
 export interface State {
   readonly decks: Array<Deck>;
@@ -7,22 +13,26 @@ export interface State {
 
 const initialState = {
   decks: [{
-    uuid: 'abcd',
+    uuid: 'deck1',
     name: 'My first deck',
     slides: [{
+      uuid: 'a',
       type: 'simple-text',
       data: 'Hallo, ich bin die erste Slide'
     }, {
+      uuid: 'b',
       type: 'simple-text',
       data: 'Zweite slide'
     }, {
+      uuid: 'c',
       type: 'simple-text',
       data: 'Dritte'
     }]
   }, {
-    uuid: 'abcd',
+    uuid: 'deck2',
     name: 'My first deck',
     slides: [{
+      uuid: 'e',
       type: 'simple-text',
       data: 'Hallo, ich bin ein anderes Deck'
     }]
@@ -37,9 +47,25 @@ export function reducer(state: State = initialState, action: DeckActions) {
       return {
         decks: state.decks.map(deck => {
           if (deck.uuid === action.deckUuid) {
-            return {...deck, slides: [...deck.slides].splice(action.index, 0, action.slide)};
+            let newSlides = [...deck.slides];
+            newSlides.splice(action.index, 0, action.slide);
+            return {...deck, slides: newSlides};
           }
           return deck;
+        })
+      };
+    case UPDATE_SLIDE_DATA_ACTION:
+      return {
+        decks: state.decks.map(deck => {
+          const slide = deck.slides.find(slide1 => slide1.uuid === action.slidekUuid);
+          if (!slide) {
+            return deck;
+          }
+          return {
+            ...deck, slides: [...deck.slides.map(slide2 => {
+              return (slide2.uuid === action.slidekUuid) ? {...slide2, data: action.data} : slide2;
+            })]
+          };
         })
       };
     default:
@@ -48,3 +74,14 @@ export function reducer(state: State = initialState, action: DeckActions) {
 }
 
 export const getAllDecks = (state: State) => state.decks;
+
+export function getDeckByUuid(uuid: string) {
+  return (state: State) => state.decks.find(deck => deck.uuid === uuid);
+}
+
+export function getSlideByUuid(uuid: string) {
+  return (state: State) => state.decks
+    .reduce((slide: Slide, deck: Deck) => {
+      return slide ? slide : deck.slides.find(slide2 => slide2.uuid === uuid);
+    }, null);
+}

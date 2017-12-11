@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PresenterComponent } from './presenter/presenter.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ShowDecksPageComponent } from './pages/show-decks/show-decks-page.component';
+import { ShowDeckPageComponent } from './pages/show-deck/show-deck-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PresenterComponent
+    component: ShowDecksPageComponent
+  },
+  {
+    path: ':uuid',
+    component: ShowDeckPageComponent
   }
 ];
 
