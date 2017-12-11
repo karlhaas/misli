@@ -1,5 +1,7 @@
 import { Slide } from './slide';
 
 export interface Deck {
-  slides: Array<Slide>
+  uuid: string;
+  name: string;
+  slides: Array<Slide>;
 }

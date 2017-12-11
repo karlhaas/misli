@@ -1,5 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, HostListener, ChangeDetectorRef } from '@angular/core';
 import { Deck } from '@core/model/deck';
+import { Store } from '@ngrx/store';
+import * as fromCore from '@core/state';
+import { Slide } from '@core/model/slide';
 
 @Component({
   selector: 'presenter',
@@ -9,53 +12,48 @@ import { Deck } from '@core/model/deck';
 })
 export class PresenterComponent implements OnInit {
 
-  deck: Deck = {
-    slides: [{
-      type: 'simple-text',
-      data: 'Hallo, ich bin die erste Slide'
-    }, {
-      type: 'simple-text',
-      data: 'Zweite slide'
-    }, {
-      type: 'simple-text',
-      data: 'Dritte'
-    }]
-  };
-
+  deck: Deck;
   index = 0;
+  currentSlide: Slide;
 
-  constructor() {
+  constructor(private store: Store<fromCore.CoreState>,
+              private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-  }
-
-  get currentSlide() {
-    return this.deck.slides[this.index];
+    this.store.select(fromCore.getAllDecks)
+      .subscribe(decks => {
+        this.deck = decks[0];
+        this.currentSlide = this.deck.slides[this.index];
+        this.changeDetectorRef.markForCheck();
+      });
   }
 
   @HostListener('document:click', ['$event'])
   nextSlide() {
     if (this.index < this.deck.slides.length - 1) {
       this.index ++;
+      this.currentSlide = this.deck.slides[this.index];
     }
   }
 
   previousSlide() {
     if (this.index > 0) {
       this.index --;
+      this.currentSlide = this.deck.slides[this.index];
     }
   }
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(event: KeyboardEvent) {
-    console.log(event);
     switch (event.code) {
       case 'PageUp':
       case 'ArrowLeft':
+      case 'ArrowUp':
         return this.previousSlide();
       case 'PageDown':
       case 'ArrowRight':
+      case 'ArrowDown':
         return this.nextSlide();
     }
   }

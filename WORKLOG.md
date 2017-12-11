@@ -14,8 +14,14 @@
 - Add keyboard and presenter navigation + basic colors
 
 ## 11:15
-- 
+- Angular Flex Layout and mouse wheel navigation
+
+## 12:35
+- Add NGRX support and read data from store
 
 # Pitfalls
 ## Angular Flex Layout
 - FlexLayoutModule not added (added just to the app module) -> styles not applied without any warning
+
+## NGRX
+- StoreRouterConnectingModule does not work well with ngrx-store-freeze
