@@ -1,11 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromReducer from '@core/state';
 import { Deck } from '@core/model/deck';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'edit-decks',
+  selector: 'kh-edit-decks',
   templateUrl: './edit-decks.component.html',
   styleUrls: ['./edit-decks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

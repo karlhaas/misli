@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { Deck } from '@core/model/deck';
 import { CoreState, getDeckByUuid } from '@core/state';
 import * as uuid from 'uuid';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { AddSlideAction } from '@core/state/deck/deck.actions';

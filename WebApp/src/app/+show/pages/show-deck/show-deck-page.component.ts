@@ -3,6 +3,8 @@ import { Deck } from '@core/model/deck';
 import { Store } from '@ngrx/store';
 import * as fromCore from '@core/state';
 import { Slide } from '@core/model/slide';
+import { ActivatedRoute, Router } from '@angular/router';
+import { getDeckByUuid, getNextSlideByUuid, getPreviousSlideByUuid } from '@core/state';
 
 @Component({
   selector: 'kh-show-deck',
@@ -13,39 +15,54 @@ import { Slide } from '@core/model/slide';
 export class ShowDeckPageComponent implements OnInit {
 
   deck: Deck;
-  index = 0;
-  currentSlide: Slide;
 
   constructor(private store: Store<fromCore.CoreState>,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
               private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.store.select(fromCore.getAllDecks)
-      .subscribe(decks => {
-        this.deck = decks[0];
-        this.currentSlide = this.deck.slides[this.index];
+    this.activatedRoute.params
+      .map(params => params['uuid'])
+      .switchMap(uuidParam => this.store.select(getDeckByUuid(uuidParam)))
+      .subscribe(deck => {
+        this.deck = deck;
         this.changeDetectorRef.markForCheck();
       });
   }
 
-  @HostListener('document:click', ['$event'])
   nextSlide() {
-    if (this.index < this.deck.slides.length - 1) {
-      this.index ++;
-      this.currentSlide = this.deck.slides[this.index];
+    const currentSlideUuid = this.getCurrentSlideUuid();
+    if (!currentSlideUuid) {
+      return;
     }
+    this.store.select(getNextSlideByUuid(currentSlideUuid))
+      .first()
+      .subscribe(slide => {
+        if (slide) {
+          this.router.navigate([slide.uuid], {relativeTo: this.activatedRoute});
+        }
+      });
   }
 
   previousSlide() {
-    if (this.index > 0) {
-      this.index --;
-      this.currentSlide = this.deck.slides[this.index];
+    const currentSlideUuid = this.getCurrentSlideUuid();
+    if (!currentSlideUuid) {
+      return;
     }
+    this.store.select(getPreviousSlideByUuid(currentSlideUuid))
+      .first()
+      .subscribe(slide => {
+        if (slide) {
+          this.router.navigate([slide.uuid], {relativeTo: this.activatedRoute});
+        }
+      });
   }
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(event: KeyboardEvent) {
+    console.log(event);
     switch (event.code) {
       case 'PageUp':
       case 'ArrowLeft':
@@ -55,6 +72,8 @@ export class ShowDeckPageComponent implements OnInit {
       case 'ArrowRight':
       case 'ArrowDown':
         return this.nextSlide();
+      case 'KeyE':
+        this.router.navigate(['edit', this.deck.uuid]);
     }
   }
 
@@ -65,5 +84,13 @@ export class ShowDeckPageComponent implements OnInit {
     } else if (event.deltaY < 0) {
       return this.previousSlide();
     }
+  }
+
+  private getCurrentSlideUuid() {
+    const children = this.activatedRoute.snapshot.children;
+    if (!children.length) {
+      return null;
+    }
+    return children[0].params['slideUuid'];
   }
 }

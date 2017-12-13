@@ -1,3 +1,5 @@
 <div class="slide-content" fxLayout="row" fxLayoutAlign="center center">
-  <span class="text-slide-content">{{slide.data}}</span>
+  <div class="text-slide-content"
+        [ngStyle]="{'font-size': fontSize}"
+        [innerHtml]="slide.data"></div>
 </div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditSlidePageComponent } from './edit-slide-page.component';
+import { ShowSlidePageComponent } from './show-slide-page.component';
 
-describe('EditSlidePageComponent', () => {
-  let component: EditSlidePageComponent;
-  let fixture: ComponentFixture<EditSlidePageComponent>;
+describe('ShowSlidePageComponent', () => {
+  let component: ShowSlidePageComponent;
+  let fixture: ComponentFixture<ShowSlidePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditSlidePageComponent ]
+      declarations: [ ShowSlidePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditSlidePageComponent);
+    fixture = TestBed.createComponent(ShowSlidePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

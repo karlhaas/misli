@@ -5,6 +5,7 @@ import { Slide } from '@core/model/slide';
 export const ADD_DECK_ACTION = 'ADD_DECK_ACTION';
 export const ADD_SLIDE_ACTION = 'ADD_SLIDE_ACTION';
 export const UPDATE_SLIDE_DATA_ACTION = 'UPDATE_SLIDE_DATA';
+export const DELETE_SLIDE_ACTION = 'DELETE_SLIDE';
 
 export class AddDeckAction implements Action {
   readonly type = ADD_DECK_ACTION;
@@ -30,7 +31,15 @@ export class UpdateSlideDataAction implements Action {
   }
 }
 
+export class DeleteSlideAction implements Action {
+  readonly type = DELETE_SLIDE_ACTION;
+
+  constructor(public slidekUuid: string) {
+  }
+}
+
 export type DeckActions =
   | AddDeckAction
   | AddSlideAction
-  | UpdateSlideDataAction;
+  | UpdateSlideDataAction
+  | DeleteSlideAction;

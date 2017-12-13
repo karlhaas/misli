@@ -1,4 +1,4 @@
-# 11.12.2017 08:45 - 13:15
+# 11.12.2017 08:45 - 13:15 (4:30)
 
 ## 08:45
 - neues BitBucket Repository
@@ -22,9 +22,18 @@
 ## 13:15
 - Basic edit components (no functionality yet)
 
-# 11.12.2017 16:30 - 18:30
+# 11.12.2017 16:30 - 18:30 (2)
 - More advanced show and edit functionality
 - Save store in local storage
+
+# 13.12.2017 7:15
+
+## 8:10
+- Added Angular Material (Card, Icon, Button, Input)
+
+## 9:00
+- Improved navigation
+
 
 # Pitfalls
 ## Angular Flex Layout

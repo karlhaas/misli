@@ -3,6 +3,6 @@
        class="slide-frame"
        *ngFor="let deck of decks; trackBy:trackByUuid"
        (click)="deckSelected(deck)">
-    <kh-show-slide [slide]="deck.slides[0]"></kh-show-slide>
+    <kh-show-slide [slide]="deck.slides[0]" fontSize="10px"></kh-show-slide>
   </div>
 </div>

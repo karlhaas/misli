@@ -2,15 +2,18 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ActionReducer, ActionReducerMap, createSelector, MetaReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromDeck from './deck/deck.reducer';
+import * as fromPresenter from './presenter/presenter.reducer';
 import { environment } from '../../../environments/environment';
 
 export interface CoreState {
   decks: fromDeck.State;
+  presenter: fromPresenter.State;
   routerReducer: RouterReducerState;
 }
 
 export const coreReducers: ActionReducerMap<CoreState> = {
   decks: fromDeck.reducer,
+  presenter: fromPresenter.reducer,
   routerReducer: routerReducer,
 };
 
@@ -43,4 +46,10 @@ export function getDeckByUuid(uuid: string) {
 }
 export function getSlideByUuid(uuid: string) {
   return createSelector(getDecksState, fromDeck.getSlideByUuid(uuid));
+}
+export function getNextSlideByUuid(uuid: string) {
+  return createSelector(getDecksState, fromDeck.getNextSlideByUuid(uuid));
+}
+export function getPreviousSlideByUuid(uuid: string) {
+  return createSelector(getDecksState, fromDeck.getPreviousSlideByUuid(uuid));
 }

@@ -6,19 +6,25 @@ import { EditDecksComponent } from './pages/edit-decks/edit-decks.component';
 import { EditDeckPageComponent } from './pages/edit-deck/edit-deck-page.component';
 import { EditDeckComponent } from './compoennts/edit-deck/edit-deck.component';
 import { EditSlideComponent } from './compoennts/edit-slide/edit-slide.component';
-import { EditSlidePageComponent } from './pages/edit-slide-page/edit-slide-page.component';
+import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     SharedModule,
-    EditRoutingModule
+    EditRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [
     EditDecksComponent,
     EditDeckPageComponent,
     EditDeckComponent,
     EditSlideComponent,
-    EditSlidePageComponent
   ]
 })
 export class EditModule {

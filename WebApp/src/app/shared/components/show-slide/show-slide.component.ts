@@ -11,6 +11,7 @@ export class ShowSlideComponent implements OnInit {
 
   @Input() slide: Slide;
   @Input() border = false;
+  @Input() fontSize = '10vh';
 
   constructor() { }
 

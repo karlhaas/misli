@@ -1,15 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="start stretch" class="edit-deck-layout">
-  <div fxFlex="200px" class="edit-deck-navigation" fxLayout="row" fxlayoutAlign="start start"
-       fxLayoutWrap>
-    <button (click)="addSlide(0)">Add Slide</button>
-    <div class="edit-deck-navigation-element"
-         *ngFor="let slide of deck.slides; trackBy: trackByUuid; index as i"
-         [routerLink]="slide.uuid">
-      <kh-show-slide [slide]="slide"></kh-show-slide>
-      <button (click)="addSlide(i+1)">Add Slide</button>
-    </div>
-  </div>
-  <div fxFlex>
-    <router-outlet></router-outlet>
-  </div>
+<button mat-raised-button (click)="addSlide(0)">
+  <mat-icon>add</mat-icon>
+  Add Slide
+</button>
+<div class="edit-deck-navigation-element"
+     *ngFor="let slide of deck.slides; trackBy: trackByUuid; index as i">
+  <kh-edit-slide [slide]="slide" [deck]="deck"></kh-edit-slide>
+  <button mat-raised-button (click)="addSlide(i+1)">
+    <mat-icon>add</mat-icon>
+    Add Slide
+  </button>
 </div>

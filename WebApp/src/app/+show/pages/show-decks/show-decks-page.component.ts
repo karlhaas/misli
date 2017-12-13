@@ -30,6 +30,6 @@ export class ShowDecksPageComponent implements OnInit {
   }
 
   selectDeck(deck: Deck) {
-    this.router.navigate([deck.uuid], {relativeTo: this.activatedRoute});
+    this.router.navigate([deck.uuid, deck.slides[0].uuid], {relativeTo: this.activatedRoute});
   }
 }
