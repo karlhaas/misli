@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Deck } from '@core/model/deck';
+import { Slide } from '@core/model/slide';
 
 @Component({
   selector: 'kh-edit-deck',
@@ -17,8 +18,8 @@ export class EditDeckComponent implements OnInit {
   ngOnInit() {
   }
 
-  trackByUuid(deck: Deck) {
-    return deck.uuid;
+  trackByUuid(slide: Slide) {
+    return slide.uuid;
   }
 
 }

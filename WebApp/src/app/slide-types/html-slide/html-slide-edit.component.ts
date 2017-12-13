@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { SlideTypeBaseComponent } from '@core/slide-types/slide-type-base.component';
 import { FormControl } from '@angular/forms';
+import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
   selector: 'kh-html-slide-edit',

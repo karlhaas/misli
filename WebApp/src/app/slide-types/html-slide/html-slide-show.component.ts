@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
-import { SlideTypeBaseComponent } from '@core/slide-types/slide-type-base.component';
+import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
   selector: 'kh-html-slide-show',

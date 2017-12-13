@@ -3,14 +3,15 @@ import {
   Component,
   ComponentFactoryResolver,
   Input,
-  OnChanges, SimpleChange,
+  OnChanges,
+  SimpleChange,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { Slide } from '@core/model/slide';
 import { SlideRegistryService } from '@core/registry/slide-registry.service';
-import { SlideTypeBaseComponent } from '@core/slide-types/slide-type-base.component';
 import { SlideHostDirective } from '@shared/directives/slide-host.directive';
+import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
   selector: 'kh-show-slide',
@@ -40,6 +41,5 @@ export class ShowSlideRegistryComponent implements OnChanges {
     if (componentRef.instance.ngOnChanges) {
       componentRef.instance.ngOnChanges({slide: new SimpleChange(undefined, this.slide, true)});
     }
-
   }
 }

@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './+not-found/not-found.component';
 import { CoreModule } from '@core/core.module';
+import { SlideTypesModule } from './slide-types/slide-types.module';
 
 export function getInitialState() {
   return {...JSON.parse(localStorage.getItem('MY_DATA'))};
@@ -33,7 +34,8 @@ export function getMetaReducers() {
     StoreModule.forRoot(coreReducers, {initialState: getInitialState}),
     BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
+    SlideTypesModule
   ],
   providers: [{
       provide: META_REDUCERS,

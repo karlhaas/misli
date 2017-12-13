@@ -30,7 +30,7 @@ export class AddSlideButtonComponent implements OnInit {
   }
 
   addSlide(entry: SlideRegistryEntry) {
-    this.store.dispatch(new AddSlideAction({uuid: uuid.v4(), data: {}, type: entry.type}, this.deck.uuid, this.index));
+    this.store.dispatch(new AddSlideAction({uuid: uuid.v4(), data: entry.createFunction(), type: entry.type}, this.deck.uuid, this.index));
   }
 
 }

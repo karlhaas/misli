@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import { Slide } from '@core/model/slide';
 import { SlideRegistryService } from '@core/registry/slide-registry.service';
-import { SlideTypeBaseComponent } from '@core/slide-types/slide-type-base.component';
 import { SlideHostDirective } from '@shared/directives/slide-host.directive';
+import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
   selector: 'kh-edit-slide-registry',
@@ -33,7 +33,11 @@ export class EditSlideRegistryComponent implements OnChanges {
   }
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    if (simpleChanges['slide'].firstChange) {
+    const slideChange = simpleChanges['slide'];
+    if (!slideChange) {
+      return;
+    }
+    if (slideChange.firstChange || slideChange.currentValue.type !== slideChange.previousValue.type) {
       const viewContainerRef = this.khSlideHost.viewContainerRef;
       const registryEntry = this.slideRegistryService.getByType(this.slide.type);
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory<SlideTypeBaseComponent>(registryEntry.editComponent);
