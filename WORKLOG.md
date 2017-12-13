@@ -41,3 +41,10 @@
 
 ## NGRX
 - StoreRouterConnectingModule does not work well with ngrx-store-freeze
+- Not initializing state in prod mode
+  - had to switch to daily build
+  - problem with npm -> downgrade node to 6LTS
+
+## future-proof architecture vs KISS
+
+## AOT

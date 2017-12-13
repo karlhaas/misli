@@ -25,7 +25,7 @@ export function logger(reducer: ActionReducer<CoreState>): ActionReducer<CoreSta
   };
 }
 
-export function localStorageStorer(reducer: ActionReducer<CoreState>): ActionReducer<CoreState> {
+export function localStorageSaver(reducer: ActionReducer<CoreState>): ActionReducer<CoreState> {
   return function(state: CoreState, action: any): CoreState {
     console.log('state', state);
     console.log('action', action);
@@ -36,8 +36,8 @@ export function localStorageStorer(reducer: ActionReducer<CoreState>): ActionRed
 }
 
 export const coreMetaReducers: MetaReducer<CoreState>[] = !environment.production
-  ? [logger, localStorageStorer, storeFreeze]
-  : [];
+  ? [logger, localStorageSaver, storeFreeze]
+  : [localStorageSaver];
 
 export const getDecksState = (state: CoreState) => state.decks;
 export const getAllDecks = createSelector(getDecksState, fromDeck.getAllDecks);
