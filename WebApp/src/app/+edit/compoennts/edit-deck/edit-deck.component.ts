@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Deck } from '@core/model/deck';
 
 @Component({
@@ -10,7 +10,6 @@ import { Deck } from '@core/model/deck';
 export class EditDeckComponent implements OnInit {
 
   @Input() deck: Deck;
-  @Output() slideAdded = new EventEmitter<number>();
 
   constructor() {
   }
@@ -22,7 +21,4 @@ export class EditDeckComponent implements OnInit {
     return deck.uuid;
   }
 
-  addSlide(index: number) {
-    this.slideAdded.emit(index);
-  }
 }

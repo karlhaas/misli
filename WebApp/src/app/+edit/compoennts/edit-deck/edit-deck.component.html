@@ -1,12 +1,6 @@
-<button mat-raised-button (click)="addSlide(0)">
-  <mat-icon>add</mat-icon>
-  Add Slide
-</button>
+<kh-add-slide-button [index]="0" [deck]="deck"></kh-add-slide-button>
 <div class="edit-deck-navigation-element"
      *ngFor="let slide of deck.slides; trackBy: trackByUuid; index as i">
   <kh-edit-slide [slide]="slide" [deck]="deck"></kh-edit-slide>
-  <button mat-raised-button (click)="addSlide(i+1)">
-    <mat-icon>add</mat-icon>
-    Add Slide
-  </button>
+  <kh-add-slide-button [index]="i+1" [deck]="deck"></kh-add-slide-button>
 </div>

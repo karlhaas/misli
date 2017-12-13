@@ -2,15 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { coreMetaReducers, coreReducers } from '@core/state';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
-import { NotFoundComponent } from './+not-found/not-found.component';
 import { META_REDUCERS, StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+import { NotFoundComponent } from './+not-found/not-found.component';
+import { CoreModule } from '@core/core.module';
 
 export function getInitialState() {
   return {...JSON.parse(localStorage.getItem('MY_DATA'))};
@@ -23,7 +24,7 @@ export function getMetaReducers() {
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +33,7 @@ export function getMetaReducers() {
     StoreModule.forRoot(coreReducers, {initialState: getInitialState}),
     BrowserAnimationsModule,
     AppRoutingModule,
+    CoreModule.forRoot()
   ],
   providers: [{
       provide: META_REDUCERS,

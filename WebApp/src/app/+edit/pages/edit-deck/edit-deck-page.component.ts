@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Deck } from '@core/model/deck';
 import { CoreState, getDeckByUuid } from '@core/state';
-import * as uuid from 'uuid';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { AddSlideAction } from '@core/state/deck/deck.actions';
 
 @Component({
   selector: 'kh-edit-deck-page',
@@ -34,9 +32,5 @@ export class EditDeckPageComponent implements OnInit {
 
   trackByUuid(deck: Deck) {
     return deck.uuid;
-  }
-
-  addSlide(index: number) {
-    this.store.dispatch(new AddSlideAction({uuid: uuid.v4(), data: {}, type: 'simple-text'}, this.deck.uuid, index));
   }
 }

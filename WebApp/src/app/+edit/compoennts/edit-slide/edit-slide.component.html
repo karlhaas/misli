@@ -4,12 +4,9 @@
   </mat-card>
   <mat-card fxFlex>
     <mat-card-content>
-      <form class="simple-text-form">
-        <mat-form-field class="simple-text-input">
-        <textarea rows="4" matInput shouldPlaceholderFloat="false" placeholder="Slide text"
-                  [formControl]="value"></textarea>
-        </mat-form-field>
-      </form>
+
+      <kh-edit-slide-registry [slide]="slide" (slideDataChanged)="slideDataChanged($event)"></kh-edit-slide-registry>
+
     </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/show', deck.uuid, slide.uuid]">

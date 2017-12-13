@@ -7,14 +7,11 @@ import { EditDeckPageComponent } from './pages/edit-deck/edit-deck-page.componen
 import { EditDeckComponent } from './compoennts/edit-deck/edit-deck.component';
 import { EditSlideComponent } from './compoennts/edit-slide/edit-slide.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     SharedModule,
     EditRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,

@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Slide } from '@core/model/slide';
 import { Store } from '@ngrx/store';
 import * as fromReducer from '@core/state';
@@ -13,29 +12,19 @@ import { Deck } from '@core/model/deck';
   styleUrls: ['./edit-slide.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditSlideComponent implements OnChanges, OnInit {
+export class EditSlideComponent {
 
   @Input() deck: Deck;
   @Input() slide: Slide;
-  value = new FormControl();
 
   constructor(private store: Store<fromReducer.CoreState>) {
   }
 
-  ngOnInit() {
-    this.value.valueChanges
-      .subscribe(value => {
-        this.store.dispatch(new UpdateSlideDataAction(this.slide.uuid, value));
-      });
-  }
-
-  ngOnChanges(simpleChanges: SimpleChanges) {
-    if (simpleChanges['slide']) {
-      this.value.setValue(this.slide.data);
-    }
-  }
-
   delete() {
     this.store.dispatch(new DeleteSlideAction(this.slide.uuid));
+  }
+
+  slideDataChanged(data: any) {
+    this.store.dispatch(new UpdateSlideDataAction(this.slide.uuid, data));
   }
 }
