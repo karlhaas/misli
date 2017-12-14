@@ -23,7 +23,7 @@ export class ShowSlideRegistryComponent implements OnChanges {
 
   @Input() slide: Slide;
   @Input() border = false;
-  @Input() fontSize = '4vh';
+  @Input() fontSize = '64px';
   @ViewChild(SlideHostDirective) khSlideHost: SlideHostDirective;
 
   constructor(private slideRegistryService: SlideRegistryService,
