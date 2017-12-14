@@ -14,7 +14,7 @@ import { SlideHostDirective } from '@shared/directives/slide-host.directive';
 import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
-  selector: 'kh-show-slide',
+  selector: 'kh-show-slide-registry',
   templateUrl: './show-slide-registry.component.html',
   styleUrls: ['./show-slide-registry.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -23,7 +23,7 @@ export class ShowSlideRegistryComponent implements OnChanges {
 
   @Input() slide: Slide;
   @Input() border = false;
-  @Input() fontSize = '5vh';
+  @Input() fontSize = '4vh';
   @ViewChild(SlideHostDirective) khSlideHost: SlideHostDirective;
 
   constructor(private slideRegistryService: SlideRegistryService,

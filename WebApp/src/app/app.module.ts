@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { NotFoundComponent } from './+not-found/not-found.component';
 import { CoreModule } from '@core/core.module';
 import { SlideTypesModule } from './slide-types/slide-types.module';
+import { ExtensionModule } from './extension/extension.module';
 
 export function getInitialState() {
   return {...JSON.parse(localStorage.getItem('MY_DATA'))};
@@ -35,7 +36,8 @@ export function getMetaReducers() {
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule.forRoot(),
-    SlideTypesModule
+    SlideTypesModule,
+    ExtensionModule
   ],
   providers: [{
       provide: META_REDUCERS,
