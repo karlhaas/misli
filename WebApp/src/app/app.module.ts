@@ -14,9 +14,14 @@ import { NotFoundComponent } from './+not-found/not-found.component';
 import { CoreModule } from '@core/core.module';
 import { SlideTypesModule } from './slide-types/slide-types.module';
 import { ExtensionModule } from './extension/extension.module';
+import { MEETUP_DATA } from './2017-12-12-angular-meetup-data';
 
 export function getInitialState() {
-  return {...JSON.parse(localStorage.getItem('MY_DATA'))};
+  let initialData = JSON.parse(localStorage.getItem('MY_DATA'));
+  if (!initialData) {
+    initialData = MEETUP_DATA;
+  }
+  return initialData;
 }
 
 export function getMetaReducers() {

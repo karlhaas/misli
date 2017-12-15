@@ -12,31 +12,7 @@ export interface State {
 }
 
 const initialState = {
-  decks: [{
-    uuid: 'deck1',
-    name: 'My first deck',
-    slides: [{
-      uuid: 'a',
-      type: 'simple-text',
-      data: 'Hallo, ich bin die erste Slide'
-    }, {
-      uuid: 'b',
-      type: 'simple-text',
-      data: 'Zweite slide'
-    }, {
-      uuid: 'c',
-      type: 'simple-text',
-      data: 'Dritte'
-    }]
-  }, {
-    uuid: 'deck2',
-    name: 'My first deck',
-    slides: [{
-      uuid: 'e',
-      type: 'simple-text',
-      data: 'Hallo, ich bin ein anderes Deck'
-    }]
-  }]
+  decks: []
 };
 
 export function reducer(state: State = initialState, action: DeckActions) {

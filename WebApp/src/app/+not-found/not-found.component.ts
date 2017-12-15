@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  storeContent = JSON.parse(localStorage.getItem('MY_DATA'));
+  storeContent: any;
 
   constructor() {
 
   }
 
   ngOnInit() {
-
+    this.storeContent = JSON.parse(localStorage.getItem('MY_DATA'));
   }
 }
