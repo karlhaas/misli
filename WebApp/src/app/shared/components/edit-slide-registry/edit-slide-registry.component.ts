@@ -38,24 +38,28 @@ export class EditSlideRegistryComponent implements OnChanges {
       return;
     }
     if (slideChange.firstChange || slideChange.currentValue.type !== slideChange.previousValue.type) {
-      const viewContainerRef = this.khSlideHost.viewContainerRef;
-      const registryEntry = this.slideRegistryService.getByType(this.slide.type);
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory<SlideTypeBaseComponent>(registryEntry.editComponent);
-      viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent(componentFactory);
-
-      if (componentRef.instance.slideDataChanged instanceof EventEmitter) {
-        componentRef.instance.slideDataChanged
-          .subscribe((property: any) => {
-            this.slideDataChanged.emit(property);
-          });
-      }
-      this.componentInstance = componentRef.instance;
+      this.loadComponent();
     }
 
     this.componentInstance.slide = this.slide;
     if (this.componentInstance.ngOnChanges) {
       this.componentInstance.ngOnChanges({slide: new SimpleChange(undefined, this.slide, true)});
     }
+  }
+
+  private loadComponent() {
+    const viewContainerRef = this.khSlideHost.viewContainerRef;
+    const registryEntry = this.slideRegistryService.getByType(this.slide.type);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory<SlideTypeBaseComponent>(registryEntry.editComponent);
+    viewContainerRef.clear();
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+
+    if (componentRef.instance.slideDataChanged instanceof EventEmitter) {
+      componentRef.instance.slideDataChanged
+        .subscribe((property: any) => {
+          this.slideDataChanged.emit(property);
+        });
+    }
+    this.componentInstance = componentRef.instance;
   }
 }

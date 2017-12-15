@@ -4,9 +4,7 @@
   </mat-card>
   <mat-card fxFlex>
     <mat-card-content>
-
       <kh-edit-slide-registry [slide]="slide" (slideDataChanged)="slideDataChanged($event)"></kh-edit-slide-registry>
-
     </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/show', deck.uuid, slide.uuid]">

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component';
 
 @Component({
   moduleId: module.id,
-  selector: 'kh-ifrmae-slide-show',
+  selector: 'kh-iframe-slide-show',
   template: `
     <iframe src="http://orf.at"></iframe>
   `,
@@ -12,8 +12,5 @@ import { SlideTypeBaseComponent } from '@core/registry/slide-type-base.component
 export class IframeSlideComponent extends SlideTypeBaseComponent {
   constructor() {
     super();
-  }
-
-  ngOnInit() {
   }
 }

@@ -62,6 +62,9 @@ export class ShowDeckPageComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(event: KeyboardEvent) {
+    if (event.ctrlKey || event.altKey) {
+      return;
+    }
     console.log(event);
     switch (event.code) {
       case 'PageUp':
